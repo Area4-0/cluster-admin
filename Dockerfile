@@ -1,5 +1,6 @@
 FROM alpine:latest
 RUN apk add --no-cache zsh python3 py3-pip git openssh-client ansible sshpass
+RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 RUN ansible-galaxy collection install community.general
 RUN echo 'eval $(ssh-agent -s)' >> /root/.zshrc
 COPY area40.ini /root/area40.ini
